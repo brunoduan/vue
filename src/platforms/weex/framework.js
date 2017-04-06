@@ -118,6 +118,12 @@ export function destroyInstance (instanceId) {
   const instance = instances[instanceId]
   if (instance && instance.app instanceof instance.Vue) {
     instance.app.$destroy()
+    instance.app = null
+    if (instance.document) {
+      instance.document.destroy()
+      instance.document = null
+    }
+    instance.callbacks = []
   }
   delete instances[instanceId]
 }

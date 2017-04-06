@@ -226,6 +226,7 @@ export default class Watcher {
       while (i--) {
         this.deps[i].removeSub(this)
       }
+      this.vm = null
       this.active = false
     }
   }
